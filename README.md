@@ -1,28 +1,57 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# DB設計
+-----------------------------------------------------------------------
 
-Things you may want to cover:
+## users table
+| Column | Type    | Options                                |
+|:------:|:-------:|:--------------------------------------:|
+| name   | string  | index: true, null: false, unique: true |
+| mail   | string  | null: false                            |
 
-* Ruby version
+### Association
++ has_many :groups, through: members
++ has_many :members
++ has_many :messages
 
-* System dependencies
+-----------------------------------------------------------------------
 
-* Configuration
+## messages table
+| Column   | Type              | Options                        |
+|:--------:|:-----------------:|:------------------------------:|
+| body     | text              | null: false                    |
+| image    | string            |                                |
+| group_id | references :group | null: false, foreign_key: true |
+| user_id  | references :user  | null: false, foreign_key: true |
 
-* Database creation
+### Association
++ belongs_to :group
++ belongs_to :user
++ belongs_to :member
 
-* Database initialization
+-----------------------------------------------------------------------
 
-* How to run the test suite
+## groups table
+| Column   | Type       | Options                                |
+|:--------:|:----------:|:--------------------------------------:|
+| name     | string     | index: true, null: false, unique: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
++ has_many :messages
++ has_many :members
++ has_many :users, through: members
 
-* Deployment instructions
+-----------------------------------------------------------------------
 
-* ...
+## members table
+| Column   | Type              | Options                |
+|:--------:|:-----------------:|:----------------------:|
+| group_id | references :group | foreign_key: true      |
+| user_id  | references :user  | foreign_key: true      |
 
+### Association
++ belongs_to :user
++ belongs_to :group
++ has_many :messages
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+-----------------------------------------------------------------------
