@@ -1,0 +1,8 @@
+.notification {
+  background-color: $aqua;
+  width: 100%;
+  &__message {
+    text-align: center;
+    color: $white;
+  }
+}
