@@ -1,12 +1,10 @@
 .chat_display
   .top_content
-    = link_to "" do
-      %p.edit_chat_group Edit
+    = link_to 'Edit', '', class: "edit_chat_group"
     %p.group_name サンプル
     %ul.group_members
       %li.group_members__list
         %p Member : gunji
-
   .middle_content
     %ul.messages
       %li.message
