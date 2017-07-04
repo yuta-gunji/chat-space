@@ -1,0 +1,21 @@
+.sidebar
+  .sidebar_user
+    %p.sidebar_user__name ユーザー名
+    %ul.sidebar_user__icon
+      %li.sidebar_user__icon__list
+        = link_to root_path do
+          %i.fa.fa-cog
+      %li.sidebar_user__icon__list
+        = link_to root_path do
+          %i.fa.fa-pencil-square-o
+  .sidebar_groups
+    %ul.sidebar_groups__group
+      %li.sidebar_groups__group__list
+        %p.sidebar_groups__group__list__name グループ名１
+        %p.sidebar_groups__group__list__message 朝
+      %li.sidebar_groups__group__list
+        %p.sidebar_groups__group__list__name グループ名2
+        %p.sidebar_groups__group__list__message ひる
+      %li.sidebar_groups__group__list
+        %p.sidebar_groups__group__list__name グループ名3
+        %p.sidebar_groups__group__list__message よる
