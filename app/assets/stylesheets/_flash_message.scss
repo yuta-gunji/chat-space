@@ -1,8 +1,11 @@
-.notification {
-  background-color: $aqua;
+.flash_message {
+  color: $white;
+  text-align: center;
   width: 100%;
-  &__message {
-    text-align: center;
-    color: $white;
+  &__alert {
+    background-color: orange;
+  }
+  &__notice {
+    background-color: $aqua;
   }
 }
