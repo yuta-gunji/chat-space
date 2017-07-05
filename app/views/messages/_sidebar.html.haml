@@ -1,7 +1,8 @@
 .sidebar
   .sidebar_user
     %p.sidebar_user__name
-      = current_user.name
+      - if user_signed_in?
+        = current_user.name
     %ul.sidebar_user__icon
       %li.sidebar_user__icon__list
         = link_to root_path do
