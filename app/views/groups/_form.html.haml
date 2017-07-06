@@ -1,5 +1,5 @@
-= form_for(@group, html:{ id: 'new_chat_group', class: 'new_chat_group' }, url: groups_path) do |f|
-  = render partial: 'layouts/errors'
+= form_for @group, url: group_path(current_user) do |f|
+  = render partial: 'errors'
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :name, 'グループ名', class: 'chat-group-form__label'
