@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to groups_path
+      redirect_to groups_path, notice: 'チャットグループが更新されました'
     else
       render :edit
     end
