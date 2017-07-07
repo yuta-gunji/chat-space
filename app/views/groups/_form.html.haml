@@ -1,5 +1,12 @@
-= form_for(@group, html:{ id: 'new_chat_group', class: 'new_chat_group' }, url: groups_path) do |f|
-  = render partial: 'layouts/errors'
+= form_for @group do |f|
+  - if @group.errors.present?
+    .chat-group-form__errors
+      %h2
+        = "#{@group.errors.count}件のエラーが発生しました。"
+        %ul
+          - @group.errors.full_messages.each do |message|
+            %li
+              = message
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :name, 'グループ名', class: 'chat-group-form__label'
