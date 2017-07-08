@@ -7,16 +7,7 @@
         %p Member : gunji
   .middle_content
     %ul.messages
-      - @messages.each do |message|
-        %li.message
-          %p.message__name
-            = message.user.name
-          %p.message__date
-            = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
-          %p.message__text
-            = message.body
-          .message__image
-            = image_tag message.image_url(:thumb) if message.image_url.present?
+      = render @group.messages
   .bottom_content
     = form_for [@group, @message], class: 'message_form' do |f|
       = f.text_field :body, class: 'message_form__text', placeholder: 'type a message'
