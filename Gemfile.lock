@@ -44,6 +44,10 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (9.0.6)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -99,6 +103,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.8.0)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
     multi_json (1.12.1)
@@ -133,9 +138,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails-i18n (5.0.4)
-      i18n (~> 0.7)
-      railties (~> 5.0)
     railties (5.0.4)
       actionpack (= 5.0.4)
       activesupport (= 5.0.4)
@@ -197,6 +199,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  carrierwave
   coffee-rails (~> 4.1.0)
   devise
   erb2haml
@@ -204,10 +207,10 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
+  mini_magick
   mysql2 (>= 0.3.13, < 0.5)
   pry-rails
   rails (~> 5.0.0, >= 5.0.0.1)
-  rails-i18n
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
