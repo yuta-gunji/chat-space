@@ -7,15 +7,21 @@
         %p Member : gunji
   .middle_content
     %ul.messages
-      %li.message
-        %p.message__name gunji
-        %p.message__date 2017/7/2
-        %p.message__text 楽しい？
+      - @messages.each do |message|
+        %li.message
+          %p.message__name
+            = message.user.name
+          %p.message__date
+            = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
+          %p.message__text
+            = message.body
+          .message__image
+            = image_tag message.image_url(:thumb) if message.image_url.present?
   .bottom_content
-    %form.message_form
-      %input{ type: "text", placeholder: "type a message", name: "text" , class: "message_form__text" }
-      %div.message_form__image_box
-        %label.message_form__image_box__icon{ for: "file" }
+    = form_for [@group, @message], class: 'message_form' do |f|
+      = f.text_field :body, class: 'message_form__text', placeholder: 'type a message'
+      .message_form__image_box
+        = f.label :image, class: 'message_form__image_box__icon' do
           %i.fa.fa-picture-o
-          %input{ type: "file", name: "image", id: "file" }
-      %input{ type: "submit", value: "Send", class: "message_form__btn" }
+          = f.file_field :image, id: 'message_image'
+      = f.submit class: 'message_form__btn', value: 'Send', data:{ disable_with: 'Send' }
