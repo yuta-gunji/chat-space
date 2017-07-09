@@ -1,0 +1,13 @@
+= link_to group_messages_path(group.id), class: 'sidebar_groups__list__group' do
+  %li.sidebar_groups__list__group__info
+    %p.sidebar_groups__list__group__info--name
+      = group.name
+    %p.sidebar_groups__list__group__info--message
+      - if group.messages.present?
+        - messages = group.messages
+        - if messages.last.image.present?
+          画像を送信しました。
+        - else
+          = messages.last.body
+      - else
+        まだメッセージはありません。
