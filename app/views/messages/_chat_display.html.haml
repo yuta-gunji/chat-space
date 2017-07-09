@@ -1,13 +1,16 @@
 .chat_display
   .top_content
-    = link_to 'Edit', '', class: "edit_chat_group"
-    %p.group_name サンプル
+    = link_to 'Edit', edit_group_path(@group), class: "edit_chat_group"
+    %p.group_name
+      = @group.name
     %ul.group_members
-      %li.group_members__list
-        %p Member : gunji
+      %span Members :
+      - @group.users.each do |user|
+        %li.group_members__list
+          = user.name
   .middle_content
     %ul.messages
-      = render @group.messages
+      = render @messages
   .bottom_content
     = form_for [@group, @message], class: 'message_form' do |f|
       = f.text_field :body, class: 'message_form__text', placeholder: 'type a message'
