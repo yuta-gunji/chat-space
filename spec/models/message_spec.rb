@@ -24,13 +24,12 @@ describe Message do
     end
 
     it "is invalid without a user_id" do
-      message = build(:message, user_id: "")
-      expect(message).not_to be_valid
-    end
+      expect{ create(:message, user_id: "") }.to raise_error(ActiveRecord::StatementInvalid)
+     end
 
     it "is invalid without a group_id" do
-      message = build(:message, group_id: "")
-      expect(message).not_to be_valid
+      expect{ create(:message, group_id: "") }.to raise_error(ActiveRecord::StatementInvalid)
     end
   end
 end
+
