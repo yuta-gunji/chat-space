@@ -18,7 +18,7 @@ describe Message do
       expect(message).to be_valid
     end
 
-    it "is invalid without message" do
+    it "is invalid without body and image" do
       message = build(:message, body: "", image: "")
       expect(message).not_to be_valid
     end
