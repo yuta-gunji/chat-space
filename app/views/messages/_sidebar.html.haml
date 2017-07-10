@@ -11,9 +11,5 @@
         = link_to new_group_path do
           %i.fa.fa-pencil-square-o
   .sidebar_groups
-    %ul.sidebar_groups__group
-      - current_user.groups.each do |group|
-        %li.sidebar_groups__group__list
-          %p.sidebar_groups__group__list__name
-            = group.name
-          %p.sidebar_groups__group__list__message 朝
+    %ul.sidebar_groups__list
+      = render @groups
