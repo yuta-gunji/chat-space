@@ -6,4 +6,4 @@
   %p.message__text
     = message.body
   .message__image
-    = image_tag message.image_url(:thumb) if message.image_url.present?
+    = image_tag message.image.url(:thumb) if message.image.present?
