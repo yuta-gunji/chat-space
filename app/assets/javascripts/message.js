@@ -1,23 +1,15 @@
 $(function(){
 
   function buildHTML(message){
-    if (message.image != null) {
-      var html = `<li class="message">
-                    <p class="message__name">${ message.name }</p>
-                    <p class="message__date">${ message.date }</p>
-                    <p class="message__text">${ message.body }</p>
-                    <div class="message__image">
-                      <img src=${ message.image }>
-                    </div>
-                  </li>`
-    }
-    else {
-      var html = `<li class="message">
-                    <p class="message__name">${ message.name }</p>
-                    <p class="message__date">${ message.date }</p>
-                    <p class="message__text">${ message.body }</p>
-                  </li>`
-    }
+    var image_view = (message.image != null)?  `<img src=${message.image}>` : ``;
+    var html = `<li class="message">
+                  <p class="message__name">${ message.name }</p>
+                  <p class="message__date">${ message.date }</p>
+                  <p class="message__text">${ message.body }</p>
+                  <div class="message__image">
+                    ${ image_view }
+                  </div>
+                </li>`
     return html;
   }
 
