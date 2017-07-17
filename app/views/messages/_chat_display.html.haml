@@ -12,10 +12,10 @@
     %ul.messages
       = render @messages
   .bottom_content
-    = form_for [@group, @message], class: 'message_form' do |f|
-      = f.text_field :body, class: 'message_form__text', placeholder: 'type a message'
-      .message_form__image_box
-        = f.label :image, class: 'message_form__image_box__icon' do
+    = form_for [@group, @message] do |f|
+      = f.text_field :body, class: 'new_message__text', placeholder: 'type a message'
+      .new_message__image_box
+        = f.label :image, class: 'new_message__image_box__icon' do
           %i.fa.fa-picture-o
           = f.file_field :image, id: 'message_image'
-      = f.submit class: 'message_form__btn', value: 'Send', data:{ disable_with: 'Send' }
+      = f.submit class: 'new_message__btn', value: 'Send', data:{ disable_with: 'Send' }
