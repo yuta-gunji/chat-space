@@ -41,7 +41,6 @@ $(function(){
   $(function(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
       var interval = setInterval(update, 5000);
-      // メッセージのIndexページにいるときのみ、updateを実行
     }
     else {
       clearInterval(interval);
@@ -50,15 +49,15 @@ $(function(){
   function update(){
     if ($('.message')[0]){
       var message_id = $('.message:last').attr('message_id');
-    } //ビューの最後のメッセージのidを取得して、message_idに代入
+    }
     else {
-      var message_id = 0  //メッセージがゼロの場合
+      var message_id = 0
     }
     $.ajax({
       url: window.location.href,
       type: 'GET',
       data: {
-        message: { id: message_id } //message_idをコントローラに送るための記述
+        message: { id: message_id }
       },
       dataType: 'json'
     })
