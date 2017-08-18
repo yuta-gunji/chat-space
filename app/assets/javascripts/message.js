@@ -15,27 +15,34 @@ $(function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
+    var body = $('.new_message__text').val();
+    var image = $('#message_image').val();
     var formData = new FormData(this);
     var href = $(this).attr('action');
-    $.ajax({
-      url: href,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(data){
-      var html = buildHTML(data);
-      $('.messages').append(html)
-      $('.new_message__text').val('')
-      $('#message_image').val('')
-      $('.middle_content').animate({scrollTop: $('.middle_content')[0].scrollHeight});
-    })
-    .fail(function(){
-      alert('送信できませんでした');
-    })
-    return false;
+    if(body == "" && image == "") {
+      return false;
+    }
+    else{
+      $.ajax({
+        url: href,
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(data){
+        var html = buildHTML(data);
+        $('.messages').append(html)
+        $('.new_message__text').val('')
+        $('#message_image').val('')
+        $('.middle_content').animate({scrollTop: $('.middle_content')[0].scrollHeight});
+      })
+      .fail(function(){
+        alert('送信できませんでした');
+      })
+      return false;
+    }
   });
 
   $(function(){
