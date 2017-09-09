@@ -22,7 +22,7 @@ $(function(){
     if(body == "" && image == "") {
       return false;
     }
-    else{
+    else {
       $.ajax({
         url: href,
         type: "POST",
